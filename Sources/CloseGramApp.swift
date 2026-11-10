@@ -11,6 +11,9 @@ struct CloseGramApp: App {
 
     init() {
         Pref.registerDefaults() // before WebModel reads any setting
+        // Lift the Instagram lock before the web view loads instagram.com.
+        LockStore.appActive = true
+        LockStore.sync()
         let web = WebModel()
         let stats = StatsStore()
         web.onRoute = { [weak stats] path in stats?.noteRoute(path) }
@@ -34,8 +37,14 @@ struct CloseGramApp: App {
             if phase == .active { stats.appBecameActive() }
             if phase == .background { stats.appWentBackground() }
             if phase == .active {
+                LockStore.appActive = true
+                LockStore.sync()
                 web.refreshTimeBasedMode()
-                LockStore.sync() // in case a timed unlock ended while the extension wasn't run
+                web.reloadIfBlocked()
+            }
+            if phase == .background {
+                LockStore.appActive = false
+                LockStore.sync() // locks the Instagram app again while you're away
             }
         }
     }

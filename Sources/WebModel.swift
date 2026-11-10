@@ -50,7 +50,12 @@ final class WebModel: NSObject, ObservableObject, WKNavigationDelegate, WKUIDele
         }
 
         let current = installScript()
-        navigate(current.startPath)
+        if LockStore.isOn {
+            // Give Screen Time a moment to lift the lock, or the first load is blocked.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { [weak self] in self?.navigate(current.startPath) }
+        } else {
+            navigate(current.startPath)
+        }
         #if DEBUG
         startDebugEval()
         #endif
@@ -98,6 +103,15 @@ final class WebModel: NSObject, ObservableObject, WKNavigationDelegate, WKUIDele
     func navigate(_ path: String) {
         guard let url = URL(string: Self.origin + path) else { return }
         webView.load(URLRequest(url: url))
+    }
+
+    /// A load that Screen Time blocked, retried once the lock is lifted.
+    private var blockedLoads = 0
+
+    func reloadIfBlocked() {
+        guard blockedLoads > 0 else { return }
+        blockedLoads = 0
+        if webView.url == nil { goHome() } else { webView.reload() }
     }
 
     func goBack() {
@@ -171,7 +185,29 @@ final class WebModel: NSObject, ObservableObject, WKNavigationDelegate, WKUIDele
         decisionHandler(.allow)
     }
 
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        handleFailure(error)
+    }
+
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        handleFailure(error)
+    }
+
+    /// WebKit reports Screen Time and content-filter blocks as codes 104 and 105.
+    private func handleFailure(_ error: Error) {
+        let nsError = error as NSError
+        guard nsError.domain == "WebKitErrorDomain", [104, 105].contains(nsError.code) else { return }
+        blockedLoads += 1
+        if blockedLoads <= 2 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+                guard let self else { return }
+                if self.webView.url == nil { self.goHome() } else { self.webView.reload() }
+            }
+        }
+    }
+
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        blockedLoads = 0
         if let path = webView.url?.path { self.path = path.hasSuffix("/") ? path : path + "/" }
     }
 

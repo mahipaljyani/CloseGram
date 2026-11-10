@@ -79,7 +79,7 @@ struct InstaLockSection: View {
         } header: {
             Text("Instagram app")
         } footer: {
-            Text("Puts a Screen Time block on the real Instagram app so you use CloseGram instead. In the list, open Social or search for Instagram. When you need the app, for example to post a reel, unlock it for \(LockStore.unlockMinutes) minutes and it locks again by itself.")
+            Text("Puts a Screen Time block on the real Instagram app so you use CloseGram instead. The block is on whenever you're outside CloseGram. In the list, open Social or search for Instagram. When you need the app, for example to post a reel, unlock it for \(LockStore.unlockMinutes) minutes and it locks again by itself.")
         }
     }
 }

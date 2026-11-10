@@ -37,10 +37,18 @@ enum LockStore {
 
     static var isTemporarilyUnlocked: Bool { (unlockedUntil ?? .distantPast) > Date() }
 
+    /// True while CloseGram is on screen. Shielding the Instagram app also blocks instagram.com
+    /// everywhere, CloseGram's own web view included, so the shield is only up while CloseGram
+    /// is in the background. You can't use both apps at once, so the native app stays locked.
+    static var appActive: Bool {
+        get { defaults.bool(forKey: "appActive") }
+        set { defaults.set(newValue, forKey: "appActive") }
+    }
+
     /// Puts the shield in the state the settings ask for.
     static func sync() {
         let apps = selection.applicationTokens
-        if isOn && !isTemporarilyUnlocked && !apps.isEmpty {
+        if isOn && !isTemporarilyUnlocked && !apps.isEmpty && !appActive {
             store.shield.applications = apps
         } else {
             store.clearAllSettings()
