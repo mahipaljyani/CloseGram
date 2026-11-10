@@ -29,7 +29,7 @@ Every feature is a switch in Settings (the tab on the right edge of the screen).
 - **Lock the real Instagram app** with Screen Time, so you use CloseGram instead. Unlock it for 15 minutes when you need it, for example to post a reel, and it locks again by itself.
 
 **Your week**
-- A stats screen (the chart tab on the right edge): minutes per day, how often you open the app, when you open it, where you go first, and how many ads, suggested posts and reels were kept out of your way. Share it as an image if you like. The numbers never leave your phone.
+- A stats screen (Settings → See your week): minutes per day, how often you open the app, when you open it, where you go first, and how many ads, suggested posts and reels were kept out of your way. Share it as an image if you like. The numbers never leave your phone.
 
 **Look**
 - **Grayscale**, to make the feed less pulling.

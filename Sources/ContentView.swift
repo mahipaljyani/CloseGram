@@ -70,7 +70,6 @@ struct ContentView: View {
             if web.showsBackButton {
                 sideTab("chevron.left", label: "Back") { web.goBack() }
             }
-            sideTab("chart.bar.fill", label: "Your week") { showInsights = true }
             sideTab("slider.horizontal.3", label: "Settings") { showSettings = true }
         }
         .animation(.easeInOut(duration: 0.2), value: web.showsBackButton)
