@@ -14,6 +14,7 @@
 		8363D4163C0DC964C7B9677B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACE5579212D1A3BC5218EC3B /* Assets.xcassets */; };
 		97645893C34F67596D0EB267 /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B8778CC0C2FBA7B1A3E8EC /* InsightsView.swift */; };
 		A24227D240155086EAA200FA /* LockMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978DE5C9A74A48DEECB3D002 /* LockMonitor.swift */; };
+		AB7FF145E2D9202B8A9E51FB /* SwipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE005C2F167376C1EE07C5A7 /* SwipeTests.swift */; };
 		BB5096D737D41E1602C5DFAB /* WebModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BF6CD60712ED4F5FDD88F3 /* WebModel.swift */; };
 		BB7EA9EA6CA880CF3E63754A /* Gates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9D12309EB7159ABD093BAE /* Gates.swift */; };
 		BF4CFB713EABB2FEF41849B3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F00A43E99242174FAA729C /* Settings.swift */; };
@@ -30,6 +31,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2E3A958A9BA388BEB4604562;
 			remoteInfo = CloseGramLockMonitor;
+		};
+		644AF3DFE370568B5BD335B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8B611F8E94650C408ABF09B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4BEDF4F4C5CF117C521198EE;
+			remoteInfo = CloseGram;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -55,6 +63,7 @@
 		49197158938CEDDAB8F5C149 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		49B8778CC0C2FBA7B1A3E8EC /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
 		5F0A1DF68CCA51A6E7E7C635 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6394BC183E031E0FB4DC4F67 /* CloseGramUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CloseGramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6989802F399E454B09BCDBFA /* LockStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockStore.swift; sourceTree = "<group>"; };
 		750FBDE8A26B5E951834B8EC /* LockMonitor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockMonitor.entitlements; sourceTree = "<group>"; };
 		76F00A43E99242174FAA729C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -67,6 +76,7 @@
 		CEFF9FF3F6663C8070FC9693 /* CloseGramLockMonitor.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = CloseGramLockMonitor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBEB1D3CEFA218BBDEA4E67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EE9D02765C0707D2E3D5AAB6 /* CloseGram.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CloseGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE005C2F167376C1EE07C5A7 /* SwipeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -87,6 +97,14 @@
 				37BF6CD60712ED4F5FDD88F3 /* WebModel.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		414FD6A239E3274B7D5839DE /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				FE005C2F167376C1EE07C5A7 /* SwipeTests.swift */,
+			);
+			path = UITests;
 			sourceTree = "<group>";
 		};
 		55637EF67083B855AA65EB1A /* LockMonitor */ = {
@@ -112,6 +130,7 @@
 			children = (
 				EE9D02765C0707D2E3D5AAB6 /* CloseGram.app */,
 				CEFF9FF3F6663C8070FC9693 /* CloseGramLockMonitor.appex */,
+				6394BC183E031E0FB4DC4F67 /* CloseGramUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,6 +142,7 @@
 				55637EF67083B855AA65EB1A /* LockMonitor */,
 				F4B25FF59BB416031C0A0A9C /* Shared */,
 				0119E8B56836D565C0D02241 /* Sources */,
+				414FD6A239E3274B7D5839DE /* UITests */,
 				B3C22B26EEC95C40C3FA7347 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -175,6 +195,24 @@
 			productReference = EE9D02765C0707D2E3D5AAB6 /* CloseGram.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A355A4FE1F86B6BFAE2EF694 /* CloseGramUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 605CCD147CF8CEB9046BDD8E /* Build configuration list for PBXNativeTarget "CloseGramUITests" */;
+			buildPhases = (
+				37DB08214D768CB1AFE9807B /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D6B8FEFFDBE7095AE121F802 /* PBXTargetDependency */,
+			);
+			name = CloseGramUITests;
+			packageProductDependencies = (
+			);
+			productName = CloseGramUITests;
+			productReference = 6394BC183E031E0FB4DC4F67 /* CloseGramUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -191,6 +229,11 @@
 					4BEDF4F4C5CF117C521198EE = {
 						DevelopmentTeam = "$(CLOSEGRAM_TEAM)";
 						ProvisioningStyle = Automatic;
+					};
+					A355A4FE1F86B6BFAE2EF694 = {
+						DevelopmentTeam = "$(CLOSEGRAM_TEAM)";
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4BEDF4F4C5CF117C521198EE;
 					};
 				};
 			};
@@ -210,6 +253,7 @@
 			targets = (
 				4BEDF4F4C5CF117C521198EE /* CloseGram */,
 				2E3A958A9BA388BEB4604562 /* CloseGramLockMonitor */,
+				A355A4FE1F86B6BFAE2EF694 /* CloseGramUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -226,6 +270,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		37DB08214D768CB1AFE9807B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB7FF145E2D9202B8A9E51FB /* SwipeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A56766BF7DC558D4FE6220A6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -259,6 +311,11 @@
 			isa = PBXTargetDependency;
 			target = 2E3A958A9BA388BEB4604562 /* CloseGramLockMonitor */;
 			targetProxy = 33C565E760977BC91598A853 /* PBXContainerItemProxy */;
+		};
+		D6B8FEFFDBE7095AE121F802 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4BEDF4F4C5CF117C521198EE /* CloseGram */;
+			targetProxy = 644AF3DFE370568B5BD335B1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -298,7 +355,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -402,7 +459,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -425,6 +482,44 @@
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
+		};
+		9800C501E1FB519AE29EF028 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "$(CLOSEGRAM_TEAM)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CLOSEGRAM_BUNDLE_ID).uitests";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CloseGram;
+			};
+			name = Release;
+		};
+		D2FA6F91FFB82FBADFEEA4F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "$(CLOSEGRAM_TEAM)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CLOSEGRAM_BUNDLE_ID).uitests";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CloseGram;
+			};
+			name = Debug;
 		};
 		D546D64772B287D5489136F8 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -474,6 +569,15 @@
 			buildConfigurations = (
 				44D07E4F5F58B81FC5C27DD2 /* Debug */,
 				1CAFE92C5F75CC7B01D5BD66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		605CCD147CF8CEB9046BDD8E /* Build configuration list for PBXNativeTarget "CloseGramUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2FA6F91FFB82FBADFEEA4F5 /* Debug */,
+				9800C501E1FB519AE29EF028 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

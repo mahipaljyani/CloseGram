@@ -5,10 +5,17 @@ options:
 settings:
   base:
     MARKETING_VERSION: "1.2"
-    CURRENT_PROJECT_VERSION: "7"
+    CURRENT_PROJECT_VERSION: "8"
 configFiles:
   Debug: Config/Base.xcconfig
   Release: Config/Base.xcconfig
+schemes:
+  CloseGram:
+    build:
+      targets:
+        CloseGram: all
+    test:
+      targets: [CloseGramUITests]
 targets:
   CloseGram:
     type: application
@@ -72,4 +79,18 @@ targets:
         DEVELOPMENT_TEAM: $(CLOSEGRAM_TEAM)
         SWIFT_VERSION: "5.0"
         TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+
+  CloseGramUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [UITests]
+    dependencies:
+      - target: CloseGram
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(CLOSEGRAM_BUNDLE_ID).uitests
+        TEST_TARGET_NAME: CloseGram
+        GENERATE_INFOPLIST_FILE: YES
+        DEVELOPMENT_TEAM: $(CLOSEGRAM_TEAM)
         CODE_SIGN_STYLE: Automatic

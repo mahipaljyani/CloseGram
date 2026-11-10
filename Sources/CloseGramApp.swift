@@ -14,13 +14,11 @@ struct CloseGramApp: App {
         // Lift the Instagram lock before the web view loads instagram.com.
         LockStore.appActive = true
         LockStore.sync()
-        let web = WebModel()
-        let stats = StatsStore()
-        web.onRoute = { [weak stats] path in stats?.noteRoute(path) }
-        web.onStat = { [weak stats] kind in stats?.recordBlocked(kind) }
-        stats.currentPath = { [weak web] in web?.path ?? "/" }
-        _web = StateObject(wrappedValue: web)
-        _stats = StateObject(wrappedValue: stats)
+        // Created lazily by SwiftUI once the app is running. Building the web view here, in the
+        // App's init before UIKit has finished launching, broke touch handling and crashed the
+        // app on the first swipe (UIGestureRecognizer _delayTouchesForEvent inserting nil).
+        _web = StateObject(wrappedValue: WebModel())
+        _stats = StateObject(wrappedValue: StatsStore())
     }
 
     var body: some Scene {
@@ -30,6 +28,7 @@ struct CloseGramApp: App {
                 .environmentObject(usage)
                 .environmentObject(gate)
                 .environmentObject(stats)
+                .onAppear { connectStats() }
         }
         .onChange(of: scenePhase) { _, phase in
             usage.setActive(phase == .active)
@@ -47,6 +46,17 @@ struct CloseGramApp: App {
                 LockStore.sync() // locks the Instagram app again while you're away
             }
         }
+    }
+}
+
+extension CloseGramApp {
+    /// Lets the stats store hear about pages and hidden posts. Runs after both objects exist.
+    func connectStats() {
+        guard web.onStat == nil else { return }
+        let stats = stats
+        web.onRoute = { [weak stats] path in stats?.noteRoute(path) }
+        web.onStat = { [weak stats] kind in stats?.recordBlocked(kind) }
+        stats.currentPath = { [weak web] in web?.path ?? "/" }
     }
 }
 
