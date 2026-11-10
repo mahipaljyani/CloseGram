@@ -1,0 +1,6 @@
+// Shared build settings. Do not put your team or bundle ID here:
+// copy Local.xcconfig.example to Local.xcconfig and set them there (it is git-ignored).
+CLOSEGRAM_BUNDLE_ID = com.example.closegram
+CLOSEGRAM_TEAM =
+
+#include? "Local.xcconfig"

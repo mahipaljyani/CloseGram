@@ -1,0 +1,9 @@
+build/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+.DS_Store
+Config/Local.xcconfig
+# Personal notes, not part of the project
+PLAN.md
+logo-prompt.txt
