@@ -1,4 +1,5 @@
 import SwiftUI
+import FamilyControls
 
 struct ContentView: View {
     @EnvironmentObject private var web: WebModel
@@ -9,6 +10,8 @@ struct ContentView: View {
     @AppStorage(Pref.dailyLimit) private var dailyLimit = 0
     @AppStorage(Pref.faceID) private var faceID = false
     @State private var showSettings = false
+    @State private var showInsights = false
+    @EnvironmentObject private var stats: StatsStore
 
     private let tick = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
 
@@ -36,10 +39,18 @@ struct ContentView: View {
                 LockView()
             }
         }
+        .sheet(isPresented: $showInsights) {
+            InsightsView()
+                .environmentObject(stats)
+                .environmentObject(usage)
+        }
         .sheet(isPresented: $showSettings) {
             SettingsView()
                 .presentationDetents([.large])
         }
+        #if DEBUG
+        .onAppear { if CommandLine.arguments.contains("-showInsights") { showInsights = true } }
+        #endif
         .onReceive(tick) { _ in
             usage.objectWillChange.send() // re-checks the daily limit
             web.refreshTimeBasedMode()   // quiet hours start and end with the clock
@@ -59,6 +70,7 @@ struct ContentView: View {
             if web.showsBackButton {
                 sideTab("chevron.left", label: "Back") { web.goBack() }
             }
+            sideTab("chart.bar.fill", label: "Your week") { showInsights = true }
             sideTab("slider.horizontal.3", label: "Settings") { showSettings = true }
         }
         .animation(.easeInOut(duration: 0.2), value: web.showsBackButton)
@@ -104,6 +116,9 @@ struct SettingsView: View {
     @AppStorage(Pref.grayscale) private var grayscale = false
 
     @State private var confirmClear = false
+    @State private var showInsights = false
+    @EnvironmentObject private var stats: StatsStore
+    @StateObject private var lock = LockModel()
 
     /// Settings that change the injected script. Changing any of them reloads the page.
     private var scriptSettings: [Int] {
@@ -118,6 +133,11 @@ struct SettingsView: View {
                     LabeledContent("Time in app", value: formatted(usage.secondsToday))
                     if dailyLimit > 0 {
                         LabeledContent("Daily limit", value: "\(dailyLimit) min")
+                    }
+                    Button {
+                        showInsights = true
+                    } label: {
+                        Label("See your week", systemImage: "chart.bar.fill")
                     }
                 }
 
@@ -177,7 +197,7 @@ struct SettingsView: View {
                     Text("The pause asks what you're here for and waits 5 seconds. Past the daily limit you can unlock more time by typing a sentence or waiting a minute.")
                 }
 
-                InstaLockSection()
+                InstaLockSection(lock: lock)
 
                 Section("Look") {
                     Toggle("Grayscale", isOn: $grayscale)
@@ -200,6 +220,12 @@ struct SettingsView: View {
                     Button("Done") { dismiss() }
                 }
             }
+            .sheet(isPresented: $showInsights) {
+                InsightsView()
+                    .environmentObject(stats)
+                    .environmentObject(usage)
+            }
+            .familyActivityPicker(isPresented: $lock.showPicker, selection: $lock.selection)
             .onChange(of: scriptSettings) { _, _ in
                 web.applySettings()
             }

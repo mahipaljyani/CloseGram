@@ -75,16 +75,23 @@ enum InjectedScript {
       // sent you, and the login and account pages.
       var MESSAGES_OK = /^\/(direct|accounts|challenge|two_factor|p|reel)(\/|$)/;
       var route = 'other';
+      var statPath = null;
+      // Counts for the on-device stats screen. Nothing leaves the phone.
+      function stat(kind) { post({ type: 'stat', kind: kind }); }
 
       function onRoute() {
         var path = location.pathname;
+        var isNewPath = path !== statPath;
+        statPath = path;
         route = 'other';
         if (path === '/') { route = 'home'; }
         else if (/^\/explore\/?$/.test(path)) { route = 'explore'; }
         document.documentElement.setAttribute('data-qg-route', route);
         post({ type: 'route', path: path });
 
+        if (cfg.blockExplore && route === 'explore' && isNewPath) { stat('explore'); }
         if (cfg.messagesOnly && !MESSAGES_OK.test(path)) {
+          stat('messagesOnly');
           location.replace('/direct/inbox/');
           return;
         }
@@ -92,6 +99,7 @@ enum InjectedScript {
           // /reels/<id>/ is the endless swipe feed opened on one video.
           // /reel/<id>/ is the same video as a single post page, with no next video.
           var single = path.match(/^\/reels\/([^\/]+)\/?$/);
+          if (single || /^\/reels\/?$/.test(path)) { stat('reelsTab'); }
           if (single) { location.replace('/reel/' + single[1] + '/'); return; }
           if (/^\/reels\/?$/.test(path)) { location.replace('/'); return; }
         }
@@ -222,8 +230,8 @@ enum InjectedScript {
           if (!limiting) { return; }
           if (id && kept[id]) { article.removeAttribute('data-qg-cut'); lastKept = article; return; }
           if (!cutReason) {
-            if (cfg.stopAtSeen && id && seenBefore[id]) { cutReason = 'seen'; log('feed: stopped at a seen post after', keptCount); }
-            else if (cfg.feedCap > 0 && keptCount >= cfg.feedCap) { cutReason = 'cap'; log('feed: stopped at', keptCount, 'posts'); }
+            if (cfg.stopAtSeen && id && seenBefore[id]) { cutReason = 'seen'; stat('feedStop'); log('feed: stopped at a seen post after', keptCount); }
+            else if (cfg.feedCap > 0 && keptCount >= cfg.feedCap) { cutReason = 'cap'; stat('feedStop'); log('feed: stopped at', keptCount, 'posts'); }
           }
           if (cutReason) {
             article.setAttribute('data-qg-cut', '1');
@@ -313,9 +321,11 @@ enum InjectedScript {
             if (cfg.hideSuggested && isSuggested(article)) {
               hide(article);
               suggestedHidden++;
+              stat('suggested');
             } else if (cfg.hideFeedReels && isFeedReel(article)) {
               hide(article);
               feedReelsHidden++;
+              stat('feedReel');
             }
           });
           feedLimits(articles);

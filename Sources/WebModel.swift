@@ -18,6 +18,8 @@ final class WebModel: NSObject, ObservableObject, WKNavigationDelegate, WKUIDele
     @Published private(set) var path = "/"
     @Published private(set) var canGoBack = false
     private var installed: ScriptConfig?
+    var onRoute: ((String) -> Void)?
+    var onStat: ((String) -> Void)?
     private var backObservation: NSKeyValueObservation?
 
     /// True on pages deeper than a top-level screen, where a native back button helps.
@@ -136,7 +138,12 @@ final class WebModel: NSObject, ObservableObject, WKNavigationDelegate, WKUIDele
         guard let body = message.body as? [String: Any], let type = body["type"] as? String else { return }
         switch type {
         case "route":
-            if let path = body["path"] as? String { self.path = path }
+            if let path = body["path"] as? String {
+                self.path = path
+                onRoute?(path)
+            }
+        case "stat":
+            if let kind = body["kind"] as? String { onStat?(kind) }
         case "log":
             NSLog("[QG] %@", (body["text"] as? String) ?? "")
         default:

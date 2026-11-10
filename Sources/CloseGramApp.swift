@@ -6,11 +6,18 @@ struct CloseGramApp: App {
     @StateObject private var web: WebModel
     @StateObject private var usage = UsageTracker()
     @StateObject private var gate = Gate()
+    @StateObject private var stats: StatsStore
     @Environment(\.scenePhase) private var scenePhase
 
     init() {
         Pref.registerDefaults() // before WebModel reads any setting
-        _web = StateObject(wrappedValue: WebModel())
+        let web = WebModel()
+        let stats = StatsStore()
+        web.onRoute = { [weak stats] path in stats?.noteRoute(path) }
+        web.onStat = { [weak stats] kind in stats?.recordBlocked(kind) }
+        stats.currentPath = { [weak web] in web?.path ?? "/" }
+        _web = StateObject(wrappedValue: web)
+        _stats = StateObject(wrappedValue: stats)
     }
 
     var body: some Scene {
@@ -19,10 +26,13 @@ struct CloseGramApp: App {
                 .environmentObject(web)
                 .environmentObject(usage)
                 .environmentObject(gate)
+                .environmentObject(stats)
         }
         .onChange(of: scenePhase) { _, phase in
             usage.setActive(phase == .active)
             gate.scenePhaseChanged(phase)
+            if phase == .active { stats.appBecameActive() }
+            if phase == .background { stats.appWentBackground() }
             if phase == .active {
                 web.refreshTimeBasedMode()
                 LockStore.sync() // in case a timed unlock ended while the extension wasn't run
@@ -37,10 +47,19 @@ final class UsageTracker: ObservableObject {
     private var activeSince: Date?
     private let defaults = UserDefaults.standard
 
-    private static func day(_ date: Date) -> String {
+    private static let dayFormatter: DateFormatter = {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy-MM-dd"
-        return formatter.string(from: date)
+        return formatter
+    }()
+
+    static func dayKey(_ date: Date) -> String { dayFormatter.string(from: date) }
+    private static func day(_ date: Date) -> String { dayKey(date) }
+
+    /// Seconds on screen on any day; today includes the visit in progress.
+    func seconds(on date: Date) -> TimeInterval {
+        Calendar.current.isDateInToday(date) ? secondsToday : defaults.double(forKey: "usage-" + Self.day(date))
     }
 
     func setActive(_ active: Bool) {

@@ -4,7 +4,7 @@ Instagram for the people you actually know. No Reels, no Explore rabbit hole, no
 
 CloseGram is a small, open-source iPhone app that opens Instagram's website inside a clean wrapper and strips out the parts built to keep you scrolling. You keep your friends' posts, stories if you want them, and your DMs.
 
-Everything runs on your phone. There is no server, no account, no analytics.
+Everything runs on your phone. There is no server, no account and no tracking.
 
 ## What it does
 
@@ -27,6 +27,9 @@ Every feature is a switch in Settings (the tab on the right edge of the screen).
 - **Daily limit.** After your limit, a "done for today" screen. You can get more time by typing a sentence or waiting a minute.
 - **Face ID lock.**
 - **Lock the real Instagram app** with Screen Time, so you use CloseGram instead. Unlock it for 15 minutes when you need it, for example to post a reel, and it locks again by itself.
+
+**Your week**
+- A stats screen (the chart tab on the right edge): minutes per day, how often you open the app, when you open it, where you go first, and how many ads, suggested posts and reels were kept out of your way. Share it as an image if you like. The numbers never leave your phone.
 
 **Look**
 - **Grayscale**, to make the feed less pulling.
