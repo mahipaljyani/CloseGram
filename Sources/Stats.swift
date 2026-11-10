@@ -17,8 +17,10 @@ struct DayStats: Codable {
 }
 
 /// Counts opens, where each visit goes first, and what got hidden. Stored only on this iPhone.
+/// Not @Published on purpose: recording happens while you scroll, and redrawing the main
+/// screen mid-touch crashed UIKit's touch handling. The stats screen reads it when it opens.
 final class StatsStore: ObservableObject {
-    @Published private(set) var days: [String: DayStats] = [:]
+    private(set) var days: [String: DayStats] = [:]
 
     /// Reads the page the web view is on, for visits that don't navigate anywhere.
     var currentPath: () -> String = { "/" }

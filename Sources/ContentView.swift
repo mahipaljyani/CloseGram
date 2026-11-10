@@ -10,8 +10,6 @@ struct ContentView: View {
     @AppStorage(Pref.dailyLimit) private var dailyLimit = 0
     @AppStorage(Pref.faceID) private var faceID = false
     @State private var showSettings = false
-    @State private var showInsights = false
-    @EnvironmentObject private var stats: StatsStore
 
     private let tick = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
 
@@ -39,20 +37,12 @@ struct ContentView: View {
                 LockView()
             }
         }
-        .sheet(isPresented: $showInsights) {
-            InsightsView()
-                .environmentObject(stats)
-                .environmentObject(usage)
-        }
         .sheet(isPresented: $showSettings) {
             SettingsView()
                 .presentationDetents([.large])
         }
-        #if DEBUG
-        .onAppear { if CommandLine.arguments.contains("-showInsights") { showInsights = true } }
-        #endif
         .onReceive(tick) { _ in
-            usage.objectWillChange.send() // re-checks the daily limit
+            if dailyLimit > 0 { usage.objectWillChange.send() } // re-checks the daily limit
             web.refreshTimeBasedMode()   // quiet hours start and end with the clock
         }
         .onOpenURL { url in

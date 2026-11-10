@@ -15,15 +15,21 @@ final class WebModel: NSObject, ObservableObject, WKNavigationDelegate, WKUIDele
     private static let rootPaths: Set<String> = ["/", "/direct/inbox/", "/explore/", "/accounts/login/"]
 
     let webView: WKWebView
-    @Published private(set) var path = "/"
-    @Published private(set) var canGoBack = false
+    /// Not published: it changes on every page, and the screen only needs `showsBackButton`.
+    private(set) var path = "/" { didSet { updateBackButton() } }
+    private var canGoBack = false { didSet { updateBackButton() } }
+    /// True on pages deeper than a top-level screen, where a native back button helps.
+    @Published private(set) var showsBackButton = false
+
+    private func updateBackButton() {
+        let show = canGoBack && !Self.rootPaths.contains(path)
+        if show != showsBackButton { showsBackButton = show }
+    }
     private var installed: ScriptConfig?
     var onRoute: ((String) -> Void)?
     var onStat: ((String) -> Void)?
     private var backObservation: NSKeyValueObservation?
 
-    /// True on pages deeper than a top-level screen, where a native back button helps.
-    var showsBackButton: Bool { canGoBack && !Self.rootPaths.contains(path) }
 
     override init() {
         let config = WKWebViewConfiguration()

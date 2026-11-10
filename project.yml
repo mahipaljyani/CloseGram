@@ -5,7 +5,7 @@ options:
 settings:
   base:
     MARKETING_VERSION: "1.2"
-    CURRENT_PROJECT_VERSION: "6"
+    CURRENT_PROJECT_VERSION: "7"
 configFiles:
   Debug: Config/Base.xcconfig
   Release: Config/Base.xcconfig
