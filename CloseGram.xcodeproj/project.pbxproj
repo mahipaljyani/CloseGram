@@ -7,24 +7,60 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11B3A4D8F6ECDD4265091327 /* InstaLockSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB5C5B8CCC439BA9371E48B /* InstaLockSection.swift */; };
 		300A13E73E33015FD38F55C9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A1DF68CCA51A6E7E7C635 /* ContentView.swift */; };
+		3BFE88052B93D9AB7B9968F9 /* LockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6989802F399E454B09BCDBFA /* LockStore.swift */; };
+		61F08A74C03AEBF55EA49C51 /* LockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6989802F399E454B09BCDBFA /* LockStore.swift */; };
 		8363D4163C0DC964C7B9677B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACE5579212D1A3BC5218EC3B /* Assets.xcassets */; };
+		A24227D240155086EAA200FA /* LockMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978DE5C9A74A48DEECB3D002 /* LockMonitor.swift */; };
 		BB5096D737D41E1602C5DFAB /* WebModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BF6CD60712ED4F5FDD88F3 /* WebModel.swift */; };
 		BB7EA9EA6CA880CF3E63754A /* Gates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9D12309EB7159ABD093BAE /* Gates.swift */; };
 		BF4CFB713EABB2FEF41849B3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F00A43E99242174FAA729C /* Settings.swift */; };
 		CB70E68123364D40D0A72D8B /* InjectedScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B3C0D71E0767B32042144 /* InjectedScript.swift */; };
 		D08FEF5C722AEDA15A7753DC /* CloseGramApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8341959E66D8DEF20A1E38 /* CloseGramApp.swift */; };
+		F7B0A6E2356DFF2033F85558 /* CloseGramLockMonitor.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CEFF9FF3F6663C8070FC9693 /* CloseGramLockMonitor.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		33C565E760977BC91598A853 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8B611F8E94650C408ABF09B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E3A958A9BA388BEB4604562;
+			remoteInfo = CloseGramLockMonitor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C386111005058CA32CBB991C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F7B0A6E2356DFF2033F85558 /* CloseGramLockMonitor.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1BB5C5B8CCC439BA9371E48B /* InstaLockSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaLockSection.swift; sourceTree = "<group>"; };
 		1C8341959E66D8DEF20A1E38 /* CloseGramApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseGramApp.swift; sourceTree = "<group>"; };
 		37BF6CD60712ED4F5FDD88F3 /* WebModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebModel.swift; sourceTree = "<group>"; };
 		3D9D12309EB7159ABD093BAE /* Gates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gates.swift; sourceTree = "<group>"; };
+		49197158938CEDDAB8F5C149 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5F0A1DF68CCA51A6E7E7C635 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6989802F399E454B09BCDBFA /* LockStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockStore.swift; sourceTree = "<group>"; };
+		750FBDE8A26B5E951834B8EC /* LockMonitor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockMonitor.entitlements; sourceTree = "<group>"; };
 		76F00A43E99242174FAA729C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		79FD44C6865D8F1F9D0CC104 /* CloseGram.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CloseGram.entitlements; sourceTree = "<group>"; };
+		978DE5C9A74A48DEECB3D002 /* LockMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockMonitor.swift; sourceTree = "<group>"; };
 		AA8B5B2CC51F1F4CB4125132 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
 		AC1B3C0D71E0767B32042144 /* InjectedScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectedScript.swift; sourceTree = "<group>"; };
 		ACE5579212D1A3BC5218EC3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEFF9FF3F6663C8070FC9693 /* CloseGramLockMonitor.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = CloseGramLockMonitor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBEB1D3CEFA218BBDEA4E67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EE9D02765C0707D2E3D5AAB6 /* CloseGram.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CloseGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -34,15 +70,27 @@
 			isa = PBXGroup;
 			children = (
 				ACE5579212D1A3BC5218EC3B /* Assets.xcassets */,
+				79FD44C6865D8F1F9D0CC104 /* CloseGram.entitlements */,
 				1C8341959E66D8DEF20A1E38 /* CloseGramApp.swift */,
 				5F0A1DF68CCA51A6E7E7C635 /* ContentView.swift */,
 				3D9D12309EB7159ABD093BAE /* Gates.swift */,
 				EDBEB1D3CEFA218BBDEA4E67 /* Info.plist */,
 				AC1B3C0D71E0767B32042144 /* InjectedScript.swift */,
+				1BB5C5B8CCC439BA9371E48B /* InstaLockSection.swift */,
 				76F00A43E99242174FAA729C /* Settings.swift */,
 				37BF6CD60712ED4F5FDD88F3 /* WebModel.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		55637EF67083B855AA65EB1A /* LockMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				49197158938CEDDAB8F5C149 /* Info.plist */,
+				750FBDE8A26B5E951834B8EC /* LockMonitor.entitlements */,
+				978DE5C9A74A48DEECB3D002 /* LockMonitor.swift */,
+			);
+			path = LockMonitor;
 			sourceTree = "<group>";
 		};
 		7897B6454FE268EE1C30F1BE /* Config */ = {
@@ -57,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				EE9D02765C0707D2E3D5AAB6 /* CloseGram.app */,
+				CEFF9FF3F6663C8070FC9693 /* CloseGramLockMonitor.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,24 +114,53 @@
 			isa = PBXGroup;
 			children = (
 				7897B6454FE268EE1C30F1BE /* Config */,
+				55637EF67083B855AA65EB1A /* LockMonitor */,
+				F4B25FF59BB416031C0A0A9C /* Shared */,
 				0119E8B56836D565C0D02241 /* Sources */,
 				B3C22B26EEC95C40C3FA7347 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
+		F4B25FF59BB416031C0A0A9C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				6989802F399E454B09BCDBFA /* LockStore.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2E3A958A9BA388BEB4604562 /* CloseGramLockMonitor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B651006E066E633EB66B778 /* Build configuration list for PBXNativeTarget "CloseGramLockMonitor" */;
+			buildPhases = (
+				A56766BF7DC558D4FE6220A6 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CloseGramLockMonitor;
+			packageProductDependencies = (
+			);
+			productName = CloseGramLockMonitor;
+			productReference = CEFF9FF3F6663C8070FC9693 /* CloseGramLockMonitor.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		4BEDF4F4C5CF117C521198EE /* CloseGram */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B8C1BDAF5FD5F7E80389DD9E /* Build configuration list for PBXNativeTarget "CloseGram" */;
 			buildPhases = (
 				D82E47612EBAD2B3D929B3C4 /* Sources */,
 				9F8A2EFA7C435952A500DE75 /* Resources */,
+				C386111005058CA32CBB991C /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BBF3647696CE811B2AC31A21 /* PBXTargetDependency */,
 			);
 			name = CloseGram;
 			packageProductDependencies = (
@@ -100,6 +178,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					2E3A958A9BA388BEB4604562 = {
+						DevelopmentTeam = "$(CLOSEGRAM_TEAM)";
+						ProvisioningStyle = Automatic;
+					};
 					4BEDF4F4C5CF117C521198EE = {
 						DevelopmentTeam = "$(CLOSEGRAM_TEAM)";
 						ProvisioningStyle = Automatic;
@@ -121,6 +203,7 @@
 			projectRoot = "";
 			targets = (
 				4BEDF4F4C5CF117C521198EE /* CloseGram */,
+				2E3A958A9BA388BEB4604562 /* CloseGramLockMonitor */,
 			);
 		};
 /* End PBXProject section */
@@ -137,6 +220,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A56766BF7DC558D4FE6220A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A24227D240155086EAA200FA /* LockMonitor.swift in Sources */,
+				61F08A74C03AEBF55EA49C51 /* LockStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D82E47612EBAD2B3D929B3C4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,12 +237,22 @@
 				300A13E73E33015FD38F55C9 /* ContentView.swift in Sources */,
 				BB7EA9EA6CA880CF3E63754A /* Gates.swift in Sources */,
 				CB70E68123364D40D0A72D8B /* InjectedScript.swift in Sources */,
+				11B3A4D8F6ECDD4265091327 /* InstaLockSection.swift in Sources */,
+				3BFE88052B93D9AB7B9968F9 /* LockStore.swift in Sources */,
 				BF4CFB713EABB2FEF41849B3 /* Settings.swift in Sources */,
 				BB5096D737D41E1602C5DFAB /* WebModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BBF3647696CE811B2AC31A21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2E3A958A9BA388BEB4604562 /* CloseGramLockMonitor */;
+			targetProxy = 33C565E760977BC91598A853 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		06C244ABA7AE242EB6DA67E0 /* Debug */ = {
@@ -188,6 +290,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -206,6 +309,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -214,6 +318,44 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1CAFE92C5F75CC7B01D5BD66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = LockMonitor/LockMonitor.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "$(CLOSEGRAM_TEAM)";
+				INFOPLIST_FILE = LockMonitor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CLOSEGRAM_BUNDLE_ID).lockmonitor";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		44D07E4F5F58B81FC5C27DD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = LockMonitor/LockMonitor.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "$(CLOSEGRAM_TEAM)";
+				INFOPLIST_FILE = LockMonitor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CLOSEGRAM_BUNDLE_ID).lockmonitor";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -252,6 +394,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -264,6 +407,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -278,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sources/CloseGram.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "$(CLOSEGRAM_TEAM)";
@@ -297,6 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sources/CloseGram.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "$(CLOSEGRAM_TEAM)";
@@ -315,6 +461,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5B651006E066E633EB66B778 /* Build configuration list for PBXNativeTarget "CloseGramLockMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44D07E4F5F58B81FC5C27DD2 /* Debug */,
+				1CAFE92C5F75CC7B01D5BD66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		90AFCCF73308377D2AADFCC2 /* Build configuration list for PBXProject "CloseGram" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

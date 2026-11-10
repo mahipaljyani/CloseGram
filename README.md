@@ -26,6 +26,7 @@ Every feature is a switch in Settings (the tab on the right edge of the screen).
 - **Pause before opening.** Asks what you're here for, and waits 5 seconds.
 - **Daily limit.** After your limit, a "done for today" screen. You can get more time by typing a sentence or waiting a minute.
 - **Face ID lock.**
+- **Lock the real Instagram app** with Screen Time, so you use CloseGram instead. Unlock it for 15 minutes when you need it, for example to post a reel, and it locks again by itself.
 
 **Look**
 - **Grayscale**, to make the feed less pulling.
@@ -36,7 +37,7 @@ iOS does not let one app change what another app shows, so CloseGram cannot edit
 
 Your login is a normal Instagram web session. Your password goes straight to Instagram, and the session cookie stays in the app's web storage on your phone. Settings, screen time and the list of posts you've seen are stored on the device only.
 
-For it to work, delete the real Instagram app, or put a Screen Time limit on it.
+For it to work, delete the real Instagram app, or turn on "Lock the Instagram app" in Settings.
 
 ## Limits
 
@@ -56,6 +57,8 @@ cp Config/Local.xcconfig.example Config/Local.xcconfig
 xcodegen generate
 open CloseGram.xcodeproj
 ```
+
+The Instagram app lock uses Apple's Family Controls, which needs a paid developer account. It works in your own development builds; TestFlight and App Store builds need Apple to approve "Family Controls (Distribution)" for the app and its `.lockmonitor` extension.
 
 Then pick your iPhone in Xcode and press Run. Or, with the phone plugged in, unlocked and in Developer Mode, run `./install.sh`.
 

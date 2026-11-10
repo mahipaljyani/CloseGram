@@ -177,6 +177,8 @@ struct SettingsView: View {
                     Text("The pause asks what you're here for and waits 5 seconds. Past the daily limit you can unlock more time by typing a sentence or waiting a minute.")
                 }
 
+                InstaLockSection()
+
                 Section("Look") {
                     Toggle("Grayscale", isOn: $grayscale)
                 }

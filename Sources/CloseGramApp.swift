@@ -23,7 +23,10 @@ struct CloseGramApp: App {
         .onChange(of: scenePhase) { _, phase in
             usage.setActive(phase == .active)
             gate.scenePhaseChanged(phase)
-            if phase == .active { web.refreshTimeBasedMode() }
+            if phase == .active {
+                web.refreshTimeBasedMode()
+                LockStore.sync() // in case a timed unlock ended while the extension wasn't run
+            }
         }
     }
 }
